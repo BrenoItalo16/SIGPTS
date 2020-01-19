@@ -1,16 +1,9 @@
-CREATE database scala;
-USE scala;
+CREATE database raylan;
+USE raylan;
 
 CREATE TABLE usuario (
     id_usuario Int auto_increment PRIMARY KEY,
     nome Varchar(30),
     email Varchar(40),
-    senha Varchar(50),
-    tema Varchar(30) DEFAULT 'css/light.css',
-    dark Varchar(30) DEFAULT 'css/dark.css',
-    imagem Varchar (100),
-    horario DATETIME
+    senha Varchar(50)
 );
-
-
-// ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Ifrn.2018elemento';  

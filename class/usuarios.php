@@ -31,11 +31,10 @@ Class Usuario{
         if($sql->rowCount() > 0){
             return false; //Já está cadastrada
         } else{ //caso não, cadastrar
-            $sql = $pdo->prepare("INSERT INTO usuario (nome, email, senha, imagem) VALUES (:n, :e, :s, :i)");
+            $sql = $pdo->prepare("INSERT INTO usuario (nome, email, senha) VALUES (:n, :e, :s)");
             $sql->bindValue(":n", $nome);
             $sql->bindValue(":e", $email);
             $sql->bindValue(":s", md5($senha));
-            $sql->bindValue(":i", $novo_nome);
             $sql->execute();
             return true; //tudo ok!
         }

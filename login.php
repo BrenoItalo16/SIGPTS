@@ -1,6 +1,6 @@
 <?php
-require_once 'class/usuarios.php';
-$u = new Usuario("scala","localhost","root","");
+    require_once 'class/usuarios.php';
+    $u = new Usuario("sigpts","localhost","root","");
 ?>
 
 <!DOCTYPE html>
@@ -10,9 +10,9 @@ $u = new Usuario("scala","localhost","root","");
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Login</title>
-        <link rel="shortcut icon" href="image/bus.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="images/bus.ico" type="image/x-icon">
         <link rel="stylesheet" href="css/login.css">
-        <link rel="stylesheet" href="css/light.css">
+        <link rel="stylesheet" href="css/estilo.css">
     </head>
 <body>
     <header>
@@ -27,6 +27,7 @@ $u = new Usuario("scala","localhost","root","");
                 </div>
             </div>
         </nav>
+    </header>
 
 
     <div class="container">
@@ -44,10 +45,10 @@ $u = new Usuario("scala","localhost","root","");
         $email = addslashes($_POST['email']);
         $senha = addslashes($_POST['senha']);
 
-        //Verificar se esta preenchido
+        //Verificar se esta preenchidos
             if(!empty($email) && !empty($senha)){
             //  $u->conectar("epiz_24468694_projeto_login","sql101.epizy.com","epiz_24468694","iJMh79rcSR3XQD");  //Para o host
-                $u->conectar("scala","localhost","root","");  //Para a máquina
+                $u->conectar("sigpts","localhost","root","");  //Para a máquina
                 if($u->msgErro == ""){
                     if($u->logar($email, $senha)){
                         Header("Location: index.php");
