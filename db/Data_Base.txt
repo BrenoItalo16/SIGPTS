@@ -1,9 +1,29 @@
-CREATE database raylan;
-USE raylan;
+CREATE database sigpts;
+USE sigpts;
 
 CREATE TABLE usuario (
     id_usuario Int auto_increment PRIMARY KEY,
     nome Varchar(30),
     email Varchar(40),
     senha Varchar(50)
+);
+
+CREATE TABLE paciente (
+    id_paciente Int auto_increment PRIMARY KEY,
+    nome Varchar(40),
+    cpf Varchar(14),
+    rg Varchar(10),
+    endereco Varchar(50),
+    numero Varchar(10),
+    bairro Varchar(30),
+    complemento Varchar(30),
+    nascimento Varchar(10),
+    sexo Varchar(10),
+    cns Varchar(18),
+    mae Varchar(40),
+    ddd1 Int(3),
+    telefone1 Int(10),
+    ddd2 Int(3),
+    telefone2 Int(10),
+    obs Varchar(100)
 );

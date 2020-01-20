@@ -1,3 +1,28 @@
+<?php
+session_start();
+    if (!isset($_SESSION["id_usuario"])){
+        Header("Location: index.php");
+    }
+?>
+
+<?php
+    if(isset($_SESSION['id_usuario'])){
+        require_once 'class/usuarios.php';
+        $u = new Usuario("sigpts","localhost","root","");    
+    }
+
+?><?php
+    $dados = $u->buscarDados($_SESSION['id_usuario']);
+    $nome = $dados["nome"];
+//    var_dump($nome);
+
+    $Nome = $dados["nome"];
+    $primeiroNome = explode(" ", $nome);
+     
+    $nome = $primeiroNome[0];
+    ?><?php
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,8 +46,9 @@
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger white-text"><i class="material-icons">menu</i></a>
                     <ul class="right hide-on-med-and-down">
                         <li><a href="#!" class="white-text">Cadastro de Pacientes</a></li>
-                        <li><a href="#!" class="white-text">Relatório</a></li>
-                        <li><a href="#!" class="white-text">Sair</a></li>
+                        <li><a href="relatorio.php" class="white-text">Relatório</a></li>
+                        <li><a href="sair.php" class="white-text">Sair</a></li>
+                        <li><a href="#!" class="yellow-text"><?php echo($nome); ?></a></li>
                     </ul>
                 </div>
             </div>
@@ -30,10 +56,10 @@
             <ul class="sidenav white" id="mobile-demo"><br>
                 <div class="row center-align">
                     <li><a href="login.php"><img src="images/user.jpg"alt="" class="circle responsive-img" style="width: 50px;"></a></li>
-                    <li><a href="#!">User</a></li>
+                    <li><a href="#!" class="yellow-text"><?php echo($nome); ?></a></li>
                     <li><a href="#!">Cadastro de Pacientes</a></li>
-                    <li><a href="#!">Relatório</a></li>
-                    <li><a href="#!">Sair</a></li>
+                    <li><a href="relatorio.php">Relatório</a></li>
+                    <li><a href="sair.php" class="white-text">Sair</a></li>
                 </div>
             </ul>
     </header>
@@ -48,7 +74,7 @@
                         <form class="col s12">
                             <div class="row">
                                 <div class="input-field col l6 s12">
-                                    <input id="first_name" type="text" class="validate">
+                                    <input id="first_name" type="text" class="validate" maxlength="40" size="40">
                                     <label for="first_name">Nome</label>
                                 </div>
                                 <div class="input-field col l3 s6">
@@ -82,22 +108,22 @@
                             
                             <div class="row">
                                 <div class="input-field col l10 s12">
-                                    <input id="endereco" type="text" class="validate">
+                                    <input id="endereco" type="text" class="validate" maxlength="50" size="50">
                                     <label for="endereco">Endereço</label>
                                 </div>
                                 <div class="input-field col l2 s12">
-                                    <input id="numero" type="text" class="validate">
+                                    <input id="numero" type="text" class="validate" maxlength="10" size="10">
                                     <label for="numero">Número</label>
                                 </div>
                             </div>
                             
                             <div class="row">
                                 <div class="input-field col l6 s12">
-                                    <input id="bairro" type="text" class="validate">
+                                    <input id="bairro" type="text" class="validate" maxlength="30" size="30">
                                     <label for="bairro">Bairro</label>
                                 </div>
                                 <div class="input-field col l6 s12">
-                                    <input id="complemento" type="text" class="validate">
+                                    <input id="complemento" type="text" class="validate" maxlength="30" size="30">
                                     <label for="complemento">Complemento</label>
                                 </div>
                             </div>
@@ -126,7 +152,7 @@
                             
                             <div>
                                 <div class="input-field col l12 s12">
-                                    <input id="mae" type="text" class="validate">
+                                    <input id="mae" type="text" class="validate" maxlength="40" size="40">
                                     <label for="mae">Nome da Mãe</label>
                                 </div>
                             </div>
@@ -137,7 +163,7 @@
                                     <label for="ddd">DDD</label>
                                 </div>
                                 <div class="input-field col l5 s5">
-                                    <input id="telefone" type="number" class="validate">
+                                    <input id="telefone" type="number" class="validate" maxlength="10" size="10">
                                     <label for="telefone">Telefone</label>
                                 </div>
                                 <div class="input-field col l1 s1">
@@ -145,17 +171,16 @@
                                     <label for="ddd2">DDD</label>
                                 </div>
                                 <div class="input-field col l5 s5">
-                                    <input id="telefone2" type="number" class="validate">
+                                    <input id="telefone2" type="number" class="validate" maxlength="10" size="10">
                                     <label for="telefone2">Telefone 02</label>
                                 </div>
                             </div>
 
-                                                            
                             <div class="row">
                                 <form class="col s12">
                                 <div class="row">
                                     <div class="input-field col s12">
-                                    <textarea id="obs" class="materialize-textarea"></textarea>
+                                    <textarea id="obs" class="materialize-textarea" maxlength="100" size="100"></textarea>
                                     <label for="obs">Observações</label>
                                     </div>
                                 </div>
