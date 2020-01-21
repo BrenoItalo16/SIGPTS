@@ -1,9 +1,12 @@
+CREATE DATABASE sigpts;
+
 USE sigpts;
 
 CREATE TABLE usuario (
     id_usuario Int auto_increment PRIMARY KEY,
     nome Varchar(30),
     email Varchar(40),
+    loginn Varchar(40),
     senha Varchar(50)
 );
 

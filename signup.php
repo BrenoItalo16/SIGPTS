@@ -54,6 +54,7 @@ session_start();
         <form method="POST" enctype="multipart/form-data">
             <input type="text" name="nome" placeholder="Nome" maxlength="30">
             <input type="email" name="email" placeholder="E-mail" maxlength="40">
+            <input type="text" name="loginn" placeholder="Login" maxlength="30">
             <input type="password" name="senha" placeholder="Senha" maxlength="15">
             <input type="password" name="confirmSenha" placeholder="Confirmar Senha" maxlength="15">
             <input type="submit" value="Cadastrar">
@@ -66,28 +67,27 @@ session_start();
     if(isset($_POST['nome'])){
         $nome = addslashes($_POST['nome']);
         $email = addslashes($_POST['email']);
+        $loginn = addslashes($_POST['loginn']);
         $senha = addslashes($_POST['senha']);
         $confirmSenha = addslashes($_POST['confirmSenha']);
 
         //Verificar se esta preenchido
-        if(!empty($nome)&& !empty($email)&& !empty($senha)&& !empty($confirmSenha)){
+        if(!empty($nome)&& !empty($email)&& !empty($loginn)&& !empty($senha)&& !empty($confirmSenha)){
         //  $u->conectar("epiz_24468694_projeto_login","sql101.epizy.com","epiz_24468694","iJMh79rcSR3XQD"); //Para uso na núvem
             $u->conectar("sigpts","localhost","root","");  //Para uso na máquina
                 if($u->msgErro == ""){ //Se esta tudo ok
                     if($senha == $confirmSenha){
-                        if($u->cadastrar($nome, $email, $senha, $novo_nome)){
+                        if($u->cadastrar($nome, $email, $loginn, $senha)){
                             ?>
                             <div id="msg-sucesso">
                                 Cadastrado com sucesso! Acesse para entar!
                             </div>
                             <?php
-                                $u->logar($email, $senha);
+                                $u->logar($email, $loginn, $senha);
                                 Header("Location: index.php");
 
                             //Se o usuário se cadastrar com sucesso ele dever entrar no jogo imediatamente    
                             Header("Location: index.php");
-
-
                         }
                          else{
                             ?>

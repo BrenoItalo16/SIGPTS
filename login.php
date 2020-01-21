@@ -42,28 +42,28 @@ if(isset($_SESSION['id_usuario'])){
         <div id="corpo-form">
             <h1>Entrar</h1>
             <form method="POST">
-                <input type="email" name="email" placeholder="Insira seu email">
+                <input type="text" name="loginn" placeholder="Insira seu login">
                 <input type="password" name="senha" placeholder="Insira a Senha">
                 <input type="submit" value="Acessar">
             </form>
         </div>
     </div>
 <?php
-    if(isset($_POST['email'])){
-        $email = addslashes($_POST['email']);
+    if(isset($_POST['loginn'])){
+        $loginn = addslashes($_POST['loginn']);
         $senha = addslashes($_POST['senha']);
 
         //Verificar se esta preenchidos
-            if(!empty($email) && !empty($senha)){
+            if(!empty($loginn) && !empty($senha)){
             //  $u->conectar("epiz_24468694_projeto_login","sql101.epizy.com","epiz_24468694","iJMh79rcSR3XQD");  //Para o host
                 $u->conectar("sigpts","localhost","root","");  //Para a máquina
                 if($u->msgErro == ""){
-                    if($u->logar($email, $senha)){
+                    if($u->logar($loginn, $senha)){
                         Header("Location: index.php");
                     } else{
                         ?>
                         <div class="msg-erro">
-                            Email e/ou senha estão incorretos!
+                            Login e/ou senha estão incorretos!
                         </div>
                         <?php
                     }
@@ -84,8 +84,6 @@ if(isset($_SESSION['id_usuario'])){
 
             }
     }
-    
-
 ?>
 </body>    
 </html>

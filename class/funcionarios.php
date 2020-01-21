@@ -11,7 +11,7 @@ Class Funcionario{
         }
     }
     
-    public function cadastrar($nome, $email, $senha, $novo_nome){
+    public function cadastrar($nome, $email, $loginn, $senha){
         global $pdo;
         //Verificar se já existe e-mail cadastrado
         $sql = $pdo->prepare("SELECT id_usuario FROM usuario WHERE  email = :e");
@@ -20,9 +20,10 @@ Class Funcionario{
         if($sql->rowCount() > 0){
             return false; //Já está cadastrada
         } else{ //caso não, cadastrar
-            $sql = $pdo->prepare("INSERT INTO usuario (nome, email, senha) VALUES (:n, :e, :s)");
+            $sql = $pdo->prepare("INSERT INTO usuario (nome, email, loginn, senha) VALUES (:n, :e, :l, :s)");
             $sql->bindValue(":n", $nome);
             $sql->bindValue(":e", $email);
+            $sql->bindValue(":l", $loginn);
             $sql->bindValue(":s", md5($senha));
             $sql->execute();
             return true; //tudo ok!
