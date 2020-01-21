@@ -47,3 +47,18 @@ $(document).ready(function(){
     var $seuCampoCns = $("#cns");
     $seuCampoCns.mask('000.0000.0000.0000', {reverse: true});
   });
+      
+  $(document).ready(function () { 
+    var $seuCampoDatainicial = $("#datainicial");
+    $seuCampoDatainicial.mask('00/00/0000', {reverse: true});
+  });
+      
+  $(document).ready(function () { 
+    var $seuCampoDatafinal = $("#datafinal");
+    $seuCampoDatafinal.mask('00/00/0000', {reverse: true});
+  });
+      
+  $(document).ready(function () { 
+    var $seuCampoDataconsulta = $("#dataconsulta");
+    $seuCampoDataconsulta.mask('00/00/0000', {reverse: true});
+  });

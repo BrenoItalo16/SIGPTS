@@ -1,4 +1,9 @@
 <?php
+    require_once 'class/usuarios.php';
+    $u = new Usuario("sigpts","localhost","root","");
+?>
+
+<?php
 session_start();
     if (!isset($_SESSION["id_usuario"])){
         Header("Location: index.php");
@@ -8,12 +13,13 @@ session_start();
 <?php
     if(isset($_SESSION['id_usuario'])){
         require_once 'class/usuarios.php';
-        $u = new Usuario("sigpts","localhost","root","");    
+        $u = new Usuario("sigpts","localhost","root","");
     }
 
 ?><?php
     $dados = $u->buscarDados($_SESSION['id_usuario']);
     $nome = $dados["nome"];
+    $email = $dados["email"];
 //    var_dump($nome);
 
     $Nome = $dados["nome"];
@@ -46,9 +52,16 @@ session_start();
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger white-text"><i class="material-icons">menu</i></a>
                     <ul class="right hide-on-med-and-down">
                         <li><a href="cadastro.php" class="white-text">Cadastro de Pacientes</a></li>
-                        <li><a href="relatorio.php" class="white-text">Relatório</a></li>
-                        <li><a href="sair.php" class="white-text">Sair</a></li>
+                        <li><a href="#!" class="white-text">Relatório</a></li>
+                        
+                        <?php 
+                            if($email == "raylanbsf.hpm@hotmail.com"){
+                                echo('<li><a href="signup.php" class="white-text">Cadastrar Usuário</a></li>');
+                            } 
+                        ?>
+
                         <li><a href="#!" class="yellow-text"><?php echo($nome); ?></a></li>
+                        <li><a href="sair.php" class="white-text"><i class="large material-icons">input</i></a></li>
                     </ul>
                 </div>
             </div>
@@ -59,23 +72,14 @@ session_start();
                     <li><a href="#!"><?php echo($nome); ?></a></li>
                     <li><a href="cadastro.php">Cadastro de Pacientes</a></li>
                     <li><a href="relatorio.php">Relatório</a></li>
-                    <li><a href="sair.php">Sair</a></li>
+                    <li><a href="sair.php" class="white-text"><i class="large material-icons">input</i></a></li>
                 </div>
             </ul>
     </header>
 
     <div class="container grey lighten-4 z-depth-1 center" style="min-height: 550px">
-      <h4 class="container grey-text darken center" style="padding-top:10px;"><strong>Busca por CPF</strong></h4>
+      <h4 class="container grey-text darken center" style="padding-top:10px;"><strong>Lista</strong></h4>
         <br>
-        <form action="">
-
-            <div class="row">
-                <div class="input-field col l6 s12">
-                    <input id="cpf" type="text" class="validate" maxlength="14" size="14">
-                    <label for="cpf">CPF</label>
-                </div>
-            </div>            
-            
     </div>
 
     <footer id="page-footer" class="col l12 m12 s12 page-footer teal lighten-4 blue-text text-darken-2">

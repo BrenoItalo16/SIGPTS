@@ -1,8 +1,19 @@
 <?php
+    require_once 'class/usuarios.php';
+    $u = new Usuario("sigpts","localhost","root","");
+?>
+ 
+<?php
 session_start();
     if (!isset($_SESSION["id_usuario"])){
         Header("Location: index.php");
+    
     }
+?>
+
+<?php
+    require_once 'class/funcionarios.php';
+    $f = new Usuario("sigpts","localhost","root","");
 ?>
 
 <?php
@@ -14,6 +25,7 @@ session_start();
 ?><?php
     $dados = $u->buscarDados($_SESSION['id_usuario']);
     $nome = $dados["nome"];
+    $email = $dados["email"];
 //    var_dump($nome);
 
     $Nome = $dados["nome"];
@@ -47,8 +59,15 @@ session_start();
                     <ul class="right hide-on-med-and-down">
                         <li><a href="#!" class="white-text">Cadastro de Pacientes</a></li>
                         <li><a href="relatorio.php" class="white-text">Relatório</a></li>
-                        <li><a href="sair.php" class="white-text">Sair</a></li>
+                        
+                        <?php 
+                            if($email == "raylanbsf.hpm@hotmail.com"){
+                                echo('<li><a href="signup.php" class="white-text">Cadastrar Usuário</a></li>');
+                            } 
+                        ?>
+
                         <li><a href="#!" class="yellow-text"><?php echo($nome); ?></a></li>
+                        <li><a href="sair.php" class="white-text"><i class="large material-icons">input</i></a></li>
                     </ul>
                 </div>
             </div>

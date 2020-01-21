@@ -1,7 +1,24 @@
 <?php
+
+session_start();
+    if (!isset($_SESSION["id_usuario"])){
+        Header("Location: login.php");
+    }
+
     require_once 'class/usuarios.php';
     $u = new Usuario("sigpts","localhost","root","");
 ?>
+
+
+<?php
+    $dados = $u->buscarDados($_SESSION['id_usuario']);
+    $nome = $dados["nome"];
+    $email = $dados["email"];
+    if($email != "raylanbsf.hpm@hotmail.com"){
+        Header("Location: login.php");
+    }
+?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -10,6 +27,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Cadastro</title>
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="shortcut icon" href="images/bus.ico" type="image/x-icon">
         <link rel="stylesheet" href="css/login.css">
         <link rel="stylesheet" href="css/estilo.css">
@@ -23,14 +42,13 @@
                     <img src="images/devbit_logo_purple.png" style="heigth: 50px; width: 50px; margin: 7px;" alt="devbit">
                     <ul class="right hide-on-med-and-down">
                         <li><a href="#!" class="deep-purple-text text-lighten-1">Sistema Integrado de Gerenciamento de Pacientes</a></li>
+                        <li><a href="sair.php" class="deep-purple-text text-lighten-1"><i class="large material-icons">input</i></a></li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-
-
-
+    
     <div id="corpo-form">
         <h1>Cadastrar</h1>
         <form method="POST" enctype="multipart/form-data">
@@ -42,6 +60,7 @@
             <a href="login.php">Já é inscrito? <strong>Acesse!</strong></a>
         </form>
     </div>
+
 <?php
     //clicou no botão
     if(isset($_POST['nome'])){

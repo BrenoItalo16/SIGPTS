@@ -1,4 +1,3 @@
-CREATE database sigpts;
 USE sigpts;
 
 CREATE TABLE usuario (
@@ -25,5 +24,7 @@ CREATE TABLE paciente (
     telefone1 Int(10),
     ddd2 Int(3),
     telefone2 Int(10),
-    obs Varchar(100)
+    obs Varchar(100),
+    dataa Varchar(10),
+    hora Varchar(10)
 );

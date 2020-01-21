@@ -1,4 +1,12 @@
 <?php
+session_start();
+if(isset($_SESSION['id_usuario'])){
+    session_destroy();
+    Header("Location: login.php");
+}
+?>
+
+<?php
     require_once 'class/usuarios.php';
     $u = new Usuario("sigpts","localhost","root","");
 ?>
