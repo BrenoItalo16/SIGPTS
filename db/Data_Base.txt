@@ -11,9 +11,9 @@ CREATE TABLE usuario (
 );
 
 CREATE TABLE paciente (
-    id_paciente Int auto_increment PRIMARY KEY,
+    id_usuario Int auto_increment PRIMARY KEY,
     nome Varchar(40),
-    cpf Varchar(14),
+    cpf Varchar(14)  PRIMARY KEY,
     rg Varchar(10),
     endereco Varchar(50),
     numero Varchar(10),
@@ -23,10 +23,10 @@ CREATE TABLE paciente (
     sexo Varchar(10),
     cns Varchar(18),
     mae Varchar(40),
-    ddd1 Int(3),
-    telefone1 Int(10),
-    ddd2 Int(3),
-    telefone2 Int(10),
+    ddd Int(3),
+    telefone Int(10),
+    dd Int(3),
+    telefonee Int(10),
     obs Varchar(100),
     dataa Varchar(10),
     hora Varchar(10)

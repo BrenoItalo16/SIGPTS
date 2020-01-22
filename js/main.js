@@ -62,3 +62,13 @@ $(document).ready(function(){
     var $seuCampoDataconsulta = $("#dataconsulta");
     $seuCampoDataconsulta.mask('00/00/0000', {reverse: true});
   });
+
+  $(document).ready(function() {
+    $('input#input_text, textarea#textarea2').characterCounter();
+  });
+
+//  M.toast({html: 'I am a toast!'})
+
+  //<div id="msg-sucesso">
+  //<a onload="M.toast({html: 'I am a toast'})" class="btn">Toast!</a>
+  //</div>

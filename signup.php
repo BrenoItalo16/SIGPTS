@@ -1,16 +1,12 @@
 <?php
-
-session_start();
+    session_start();
     if (!isset($_SESSION["id_usuario"])){
         Header("Location: login.php");
     }
 
     require_once 'class/usuarios.php';
     $u = new Usuario("sigpts","localhost","root","");
-?>
 
-
-<?php
     $dados = $u->buscarDados($_SESSION['id_usuario']);
     $nome = $dados["nome"];
     $email = $dados["email"];

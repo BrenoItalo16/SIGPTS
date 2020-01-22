@@ -1,24 +1,25 @@
 #ToDo
 ----------------------
 
-1->
-    <-- Tela de login (apenas login) -->
-
-    <-- Administrador - Dashboard -->
-        Cadastro Municipio
-            -Cadastro Usuário
-            -Relatório
-            -Backup
-            -Sair
-
-    <-- Usuário Comum -->
-        Header->
-            -Inserir paciente
-            -Gerar Lista
-            -Sair
+•Conectar Formulário de paciente
+  >Nome, CPF, RG, Endereço, Número, Bairro, Complemento,
+   Data de nascimento, Sexo, CNS, Nome da mãe, ddd, telefone, ddd2, telefone2
+   Observações.
 
 
-Notes
-    >paciente já cadastrado retorna os valores para o formulário.
-    >pegar a data do sistema
-    >
+
+
+
+
+
+1-> para cadastrar
+	agendar passagem? popup- se sim qual a data?
+	if.
+	Sim.Qual Cidade Destino? Select Com cidades opcionais
+
+2-> Qual o procedimento> *Lista de Procedimento
+	•Destino = Local da Cidade(Nome do Hospital)
+	•Horário da Consulta
+	 Se Vai e Volta? Pode marcar os dois.
+
+3-> 
