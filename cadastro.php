@@ -114,28 +114,47 @@
                             </div>
                             
                             <div class="row">
-                                    <div class="input-field col l4 m4 s12">
-                                        <input id="nascimento" name="nascimento" type="text" class="validate" maxlength="10" size="10">
-                                        <label for="nascimento">Data de Nascimento</label>
-                                    </div>
-                                
-                                <div class="col l4 m4 s12">                                                
-                                    <label>Sexo</label>
-                                    <select class="browser-default" name="sexo" disabled>
-                                        <option value="" disabled selected>Escolha o Sexo</option>
-                                        <option value="1">Masculino</option>
-                                        <option value="2">Feminino</option>
-                                    </select>
+                                <div class="input-field col l4 m4 s12">
+                                    <input id="nascimento" name="nascimento" type="text" class="validate" maxlength="10" size="10">
+                                    <label for="nascimento">Data de Nascimento</label>
                                 </div>
 
                                 <div>
-                                    <div class="input-field col l4 s12">
+                                    <div class="input-field col l4 m4 s12">
                                         <input id="cns" name="cns" type="text" class="validate" maxlength="18" size="18">
                                         <label for="cns">CNS</label>
                                     </div>
                                 </div>
+
+
+
+                                <span class="helper-text  blue-grey-text text-darken-2" data-error="wrong" data-success="right">Escolha o Sexo</span>
+                                <p>
+                                <label>
+                                    <input name="group1[]" value="Masculino" type="radio" />
+                                    <span>Masculino</span>
+                                </label>
+                                </p>
+                                <p>
+                                <label>
+                                    <input name="group1[]" value="Feminino" type="radio" />
+                                    <span>Feminino</span>
+                                </label>
+                                </p>
+                                
+                                <?php
+                                if(isset($_POST['acao']) && $_POST['acao'] == "cadastrar"){
+
+                                    if(!empty($_POST['group1'])){
+                                        $sex = $_POST['group1'];
+                                        foreach($sex as $value){
+                                            $_POST['sexo'] = $value;   
+                                        } //foreach
+                                    } //empty    
+                                } //isset
+                                ?>
                             </div>
-                            
+                            </div>                           
                             <div>
                                 <div class="input-field col l12 s12">
                                     <input id="mae" name="mae" type="text" class="validate" maxlength="40" size="40">
@@ -173,10 +192,21 @@
                             <br>
                             
                             <div class="fixed-action-btn">
-                                <button class="btn waves-effect waves-light" type="submit" value="cadastrar">Cadastrar Paciente
+                                <button class="btn waves-effect waves-light" type="submit" name="acao" value="cadastrar">Cadastrar Paciente
                                     <i class="large material-icons right">send</i>
                                 </button>
                             </div>
+                                
+
+                            <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+
+
+
+
+
+
+
+
                                 
                             <br>
                             <br>
@@ -192,8 +222,6 @@
                 date_default_timezone_set('America/Fortaleza');
                 $_POST['dataa'] = date("d.m.y");
                 $_POST['hora'] = date('H:i:s');
-
-                    var_dump($_POST['hora']);
                 
                 if(isset($_POST['nome'])){
                     $nome = addslashes($_POST['nome']);
@@ -204,7 +232,7 @@
                     $bairro = addslashes($_POST['bairro']);
                     $complemento = addslashes($_POST['complemento']);
                     $nascimento = addslashes($_POST['nascimento']);
-//                    $sexo = addslashes($_POST['sexo']);
+                    $sexo = addslashes($_POST['sexo']);
                     $cns = addslashes($_POST['cns']);
                     $mae = addslashes($_POST['mae']);
                     $ddd = addslashes($_POST['ddd']);
@@ -220,9 +248,9 @@
                     //  $u->conectar("epiz_24468694_projeto_login","sql101.epizy.com","epiz_24468694","iJMh79rcSR3XQD"); //Para uso na núvem
                         $u->conectar("sigpts","localhost","root","");  //Para uso na máquina
                         if($p->msgErro == ""){ //Se esta tudo ok
-                            $p->cadastrarPaciente($nome, $cpf, $rg, $endereco, $numero, $bairro,$complemento, $nascimento, $cns, $mae, $ddd, $telefone, $dd, $telefonee, $obs, $dataa, $hora);  
+                            $p->cadastrarPaciente($nome, $cpf, $rg, $endereco, $numero, $bairro,$complemento, $nascimento, $sexo, $cns, $mae, $ddd, $telefone, $dd, $telefonee, $obs, $dataa, $hora);  
                             ?>
-                                <div class="msg-sucesso">
+                                <div class="msg-erro">
                                     Paciente Cadastrado com Sucesso!
                                 </div>
                             <?php
@@ -236,6 +264,9 @@
                         } 
                     }else{
                         ?>
+                        
+                        <a onclick="M.toast({html: 'I am a toast'})" name="acao" class="btn">Toast!</a>
+
                             <div class="msg-erro">
                                 Os Campos Nome e CPF são obrigatórios!
                             </div>

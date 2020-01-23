@@ -11,7 +11,7 @@ Class Paciente{
         }
     }
     
-    public function cadastrarPaciente($nome, $cpf, $rg, $endereco, $numero, $bairro, $complemento, $nascimento, $cns, $mae, $ddd, $telefone, $dd, $telefonee, $obs, $dataa, $hora){
+    public function cadastrarPaciente($nome, $cpf, $rg, $endereco, $numero, $bairro, $complemento, $nascimento, $sexo, $cns, $mae, $ddd, $telefone, $dd, $telefonee, $obs, $dataa, $hora){
         global $pdo;
         //Verificar se já existe e-mail cadastrado
         $sql = $pdo->prepare("SELECT cpf FROM paciente WHERE  cpf = :c");
@@ -20,8 +20,8 @@ Class Paciente{
         if($sql->rowCount() > 0){
             return false; //Já está cadastrada
         } else{ //caso não, cadastrar
-            $sql = $pdo->prepare("INSERT INTO paciente (nome, cpf, rg, endereco, numero, bairro, complemento, nascimento, cns, mae, ddd, telefone, dd, telefonee, obs, dataa, hora)
-                                               VALUES (:n, :c, :r, :e, :nu, :b, :co, :na, :cn, :m, :d1, :t1, :d2, :t2, :o, :da, :hr)");
+            $sql = $pdo->prepare("INSERT INTO paciente (nome, cpf, rg, endereco, numero, bairro, complemento, nascimento, sexo, cns, mae, ddd, telefone, dd, telefonee, obs, dataa, hora)
+                                               VALUES (:n, :c, :r, :e, :nu, :b, :co, :na, :s, :cn, :m, :d1, :t1, :d2, :t2, :o, :da, :hr)");
             $sql->bindValue(":n", $nome);
             $sql->bindValue(":c", $cpf);
             $sql->bindValue(":r", $rg);
@@ -30,7 +30,7 @@ Class Paciente{
             $sql->bindValue(":b", $bairro);
             $sql->bindValue(":co", $complemento);
             $sql->bindValue(":na", $nascimento);
-//            $sql->bindValue(":s", $sexo);
+            $sql->bindValue(":s", $sexo);
             $sql->bindValue(":cn", $cns);
             $sql->bindValue(":m", $mae);
             $sql->bindValue(":d1", $ddd);
