@@ -22,4 +22,33 @@
 	•Horário da Consulta
 	 Se Vai e Volta? Pode marcar os dois.
 
-3-> 
+3-> Agendar passagem
+	Na Lista{
+		•Quantidade de vagas
+		•Data da viagem
+		•Ida e vinda
+		•Procedimento
+		•Cidade destino
+		•Parada do onibus
+		•Local da Consulta
+		•Horário da Consulta
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

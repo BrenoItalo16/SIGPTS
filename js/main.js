@@ -27,6 +27,11 @@ $(document).ready(function(){
     var $seuCampoCpf = $("#cpf");
     $seuCampoCpf.mask('000.000.000-00', {reverse: true});
   });
+
+  $(document).ready(function () { 
+    var $seuCampoCpfb = $("#cpfb");
+    $seuCampoCpfb.mask('000.000.000-00', {reverse: true});
+  });
       
   $(document).ready(function () { 
     var $seuCampoRg = $("#rg");

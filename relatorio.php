@@ -52,7 +52,7 @@ session_start();
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger white-text"><i class="material-icons">menu</i></a>
                     <ul class="right hide-on-med-and-down">
                         <li><a href="cadastro.php" class="white-text">Cadastro de Pacientes</a></li>
-                        <li><a href="#!" class="white-text">Relatório</a></li>
+                        <li><a href="agendar.php" class="white-text">Agendar Passagem</a></li>
                         
                         <?php 
                             if($email == "raylanbsf.hpm@hotmail.com"){
@@ -71,7 +71,7 @@ session_start();
                     <li><a href="login.php"><img src="images/user.jpg"alt="" class="circle responsive-img" style="width: 50px;"></a></li>
                     <li><a href="#!"><?php echo($nome); ?></a></li>
                     <li><a href="cadastro.php">Cadastro de Pacientes</a></li>
-                    <li><a href="relatorio.php">Relatório</a></li>
+                    <li><a href="agendar.php">Agendar Passagem</a></li>
                     <li><a href="sair.php" class="white-text"><i class="large material-icons">input</i></a></li>
                 </div>
             </ul>

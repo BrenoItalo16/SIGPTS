@@ -42,7 +42,7 @@
                             <a href="index.php" class="brand-logo white-text">Cadastro</a>        
                             <a href="#" data-target="mobile-demo" class="sidenav-trigger white-text"><i class="material-icons">menu</i></a>
                             <ul class="right hide-on-med-and-down">
-                                <li><a href="#!" class="white-text">Cadastro de Pacientes</a></li>
+                                <li><a href="agendar.php" class="white-text">Agendar Passagens</a></li>
                                 <li><a href="relatorio.php" class="white-text">Relatório</a></li>
                                 
                                 <?php 
@@ -197,17 +197,6 @@
                                 </button>
                             </div>
                                 
-
-                            <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
-
-
-
-
-
-
-
-
-                                
                             <br>
                             <br>
                         </form>
@@ -264,9 +253,6 @@
                         } 
                     }else{
                         ?>
-                        
-                        <a onclick="M.toast({html: 'I am a toast'})" name="acao" class="btn">Toast!</a>
-
                             <div class="msg-erro">
                                 Os Campos Nome e CPF são obrigatórios!
                             </div>
